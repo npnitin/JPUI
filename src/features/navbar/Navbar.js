@@ -19,7 +19,7 @@ class Navbar extends Component {
         <div>
              <Menu inverted fixed="top">
                     <Container>
-                      <Menu.Item header as={Link} to="/" >NaukriRefer
+                      <Menu.Item header as={Link} to="/" >ReferralJobz
                         <img src="assets/logo.png" alt="logo" />
                       </Menu.Item>
                       <Menu.Item>Find Salaries</Menu.Item>
@@ -28,7 +28,7 @@ class Navbar extends Component {
                       <Menu.Item>Interview Questions</Menu.Item>
                       <Menu.Item position="right">
                         <Button  basic inverted as={Link} to='/user/createnewjob'>Add Job</Button>
-                        <Button  basic inverted as={Link} to="/dashboard">Search Job</Button>
+                       {/*  <Button  basic inverted as={Link} to="/dashboard">Search Job</Button> */}
                         {
                         autheticated?
                         <SignInMenu user={user}/>:

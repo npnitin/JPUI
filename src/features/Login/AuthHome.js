@@ -12,6 +12,7 @@ const mapStateToProps = (state) =>({
     render() {
         const {loading} = this.props.auth;
         const{ error } =this.props.auth;
+        const{ registrationSuceessMessage } =this.props.auth;
         return (
             <Container>
                  {loading===true ? <Dimmer active>
@@ -19,6 +20,7 @@ const mapStateToProps = (state) =>({
                 </Dimmer>:''}
                 <Header as='h3' textAlign='center' color='teal'>You can apply to job without login, but in order to add new job,you need to login</Header>
                 <Header as='h5' textAlign='center' color='red' style={{marginBottom:'-10%'}}>{error}</Header>
+                <Header as='h5' textAlign='center' color='green' style={{marginTop:'10%'}}>{registrationSuceessMessage}</Header>
                 <Grid columns={2}>
                     <Grid.Column width={8}>
                         <RegisterForm />

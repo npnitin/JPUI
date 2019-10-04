@@ -38,7 +38,7 @@ class LoginForm extends Component {
     }
     return (
       <div>
-        <Grid textAlign='center' style={{ height: '100vh', marginTop: '20%' }}>
+        <Grid textAlign='center' style={{ height: '100vh'}}>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h5' color='teal' textAlign='center'>
               <Image src='assets/logo.png' /> Log-in to your account if you already have account

@@ -4,7 +4,8 @@ const initialState={
     loading:false,
     user:{},
     autheticated:false,
-    error:''
+    error:'',
+    registrationSuceessMessage:''
 }
 
 export const AuthReducer = (state=initialState,action)=>{
@@ -56,7 +57,8 @@ export const AuthReducer = (state=initialState,action)=>{
                 ...state,
                 user:action.payload,
                 loading:false,
-                error:''
+                error:'',
+                registrationSuceessMessage:'Registration successful and proceed with login'
             }
         }
         case ADD_ERROR:{

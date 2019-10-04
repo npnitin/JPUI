@@ -14,7 +14,7 @@ import TestComponent from './Test/TestComponent';
 function App() {
   
   return (
-    <Fragment>
+    <div>
       <Navbar/><br/><br/>
       <Container className="main">
         <Route exact path="/" component={Home}/>
@@ -25,7 +25,7 @@ function App() {
         <Route path="/user" component={UserDashboard}/>
         <Route path="/test" component={TestComponent}/>
         </Container>
-    </Fragment>
+    </div>
   );
 }
 

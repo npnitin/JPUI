@@ -41,9 +41,11 @@ class RegisterForm extends Component {
     
   }
   render() {
+    const{message} = this.props
     return (
-      <Grid textAlign='center' style={{ height: '100vh', marginTop: '20%' }}>
+      <Grid textAlign='center' style={{ height: '100vh'}}>
         <Grid.Column style={{ maxWidth: 450 }}>
+          <Header>{this.props.registrationSuceessMessage}</Header>
           <Header as='h5' color='teal' textAlign='center'>
             <Image src='assets/logo.png' /> Register if do not have existing account
               </Header>

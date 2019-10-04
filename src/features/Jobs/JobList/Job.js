@@ -57,7 +57,7 @@ class Job extends Component {
    const { job } = this.props;
    const{ jobAppliedSucessModal} = this.props.jobs;
    let img = 'https://logo.clearbit.com/'+job.company+'.com';
-   let defaultImage ='https://logo.clearbit.com/default.com';
+   let defaultImage ='https://logo.clearbit.com/company.com';
     return (
       <Segment.Group>
         <Segment id={job.id}>

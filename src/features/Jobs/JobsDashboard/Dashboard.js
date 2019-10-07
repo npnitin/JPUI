@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from 'react'
-import { Grid,Button,Dimmer,Loader,Icon } from 'semantic-ui-react';
+import { Grid,Button,Dimmer,Loader,Icon,Message } from 'semantic-ui-react';
 import JobList from '../JobList/JobList';
 import AccordionLeftFilter from '../../Filters/AccordionLeftFilter';
 import AccordionRightFilter from '../../Filters/AccordionRightFilter';
@@ -35,6 +35,8 @@ class Dashboard extends Component {
     }
     render() {
         const { loading } =this.props.jobs;
+        const { data } = this.props.jobs.jobs;
+        console.log('data:'+JSON.stringify(data));
         return (
             <Fragment>
                 {loading===true ? <Dimmer active>
@@ -48,11 +50,15 @@ class Dashboard extends Component {
                     <Grid.Column width={3}><Button primary rounded onClick={this.clearFilters}>Clear Filters <Icon name='trash'/></Button></Grid.Column>
                     </Grid>
             <hr color='#D0CCCB'/><br/>
-            <Grid>
+            { data && data.length>0 ?<Grid>
                 <Grid.Column width={3}><AccordionLeftFilter /></Grid.Column>
                 <Grid.Column width={10}><JobList /></Grid.Column>
                 <Grid.Column width={3}><AccordionRightFilter /></Grid.Column>
-                </Grid>
+                </Grid>:
+                 <Message warning>
+                 <Message.Header>No results found for your search,Plase refine your search criteria </Message.Header>
+               </Message>
+            }
                 </Fragment>
         )
     }

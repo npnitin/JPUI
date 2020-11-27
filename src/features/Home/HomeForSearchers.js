@@ -49,20 +49,22 @@ state={
                 <Grid>
                     <Grid.Column width={1}></Grid.Column>
                     <Grid.Column width={5}><SearchSkills/></Grid.Column>
+                    <Grid.Column width={1}></Grid.Column>
                     <Grid.Column width={5}><SearchCities /></Grid.Column>
+                    <Grid.Column width={1}></Grid.Column>
                     <Grid.Column width={2}><Button content='Search' primary rounded  onClick={this.searchJobs} /></Grid.Column>
                     </Grid>
                     <br/>
                 <Grid style={{marginTop:'-4%'}}>
                     <Grid.Column width={1}></Grid.Column>
-                    <Grid.Column width={5}><Header as='h6' color='red'>{this.state.skillError}</Header></Grid.Column>
-                    <Grid.Column width={5}> <Header as='h6' color='red'>{this.state.cityError}</Header></Grid.Column>
+                    <Grid.Column width={6}><Header as='h6' color='red'>{this.state.skillError}</Header></Grid.Column>
+                    <Grid.Column width={6}> <Header as='h6' color='red'>{this.state.cityError}</Header></Grid.Column>
                     </Grid>
                     <br/>
-                <Grid>
+               {/*  <Grid>
                     <Grid.Column width={1}></Grid.Column>
                     <Grid.Column width={10}> Have look at <a onClick={this.getMostRecentJobs}> Recently added jobs</a></Grid.Column>
-                    </Grid>
+                    </Grid> */}
             </Fragment>
         )
     }

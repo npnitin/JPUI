@@ -34,7 +34,7 @@ class LoginForm extends Component {
     const{ autheticated } =this.props.auth;
     console.log(autheticated);
     if(autheticated){
-      this.props.history.push('/user/myjobs');
+      this.props.history.push('/user/profile');
     }
     return (
       <div>

@@ -163,3 +163,6 @@ body {
   pre{
     margin: 0 0 0 0
   }
+  .heading-text{
+    font-size: 18px;
+  }

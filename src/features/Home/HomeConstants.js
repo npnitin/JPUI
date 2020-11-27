@@ -1,5 +1,6 @@
 export const GET_CONFIG='GET_CONFIG';
 export const GET_JOBS='GET_JOBS';
+export const GET_JOB_BY_ID='GET_JOB_BY_ID';
 export const GET_RECENT_JOBS='GET_RECENT_JOBS'
 export const ITEMS_LOADING='ITEMS_LOADING';
 export const SET_CITY='SET_CITY';

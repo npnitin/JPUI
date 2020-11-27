@@ -23,6 +23,8 @@ const mapDispatchToProps ={
               <Dropdown.Menu>
                 <Dropdown.Item text="Create New Job" as={Link} to='/user/createnewjob' icon="plus" />
                 <Dropdown.Item text="My Jobs" as={Link} to='/user/myjobs' icon="calendar" />
+                <Dropdown.Item text="Add New Interview Questions" as={Link} to='/user/createNewInterviewQuestions' icon="plus" />
+                <Dropdown.Item text="My Interview Questions" as={Link} to='/user/myInterviewQuestions' icon="calendar" />
                 <Dropdown.Item text="My Profile" as={Link} to='/user/profile' icon="user" />
                 <Dropdown.Item text="Settings" icon="settings" />
                 <Dropdown.Item text="Sign Out" onClick={this.handleSignOut} icon="power" />

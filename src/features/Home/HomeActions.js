@@ -9,7 +9,8 @@ import {
      SET_SAL,
      SET_EXP,
      CLEAR_FILTERS,
-     GET_RECENT_JOBS}
+     GET_RECENT_JOBS,
+    GET_JOB_BY_ID}
       from "./HomeConstants"
 import {API_BASE_URL} from '../../util/Constants';
 import axios from "axios";
@@ -37,6 +38,20 @@ export const getRecentJobs = () =>dispatch =>{
         })
     .then(response => dispatch({
         type:GET_RECENT_JOBS,
+        payload:response
+    })).catch(err => dispatch({
+        type:DESABLE_LOADING
+    }))
+}
+export const getJobById = (id) =>dispatch=>{
+    dispatch(setItemsLoading());
+    axios({
+        method:'GET',
+        url: API_BASE_URL+'/api/jobportal/jobpost?id='+id,
+        config: { headers: {'Content-Type': 'application/json' }}
+    })
+    .then(response => dispatch({
+        type:GET_JOB_BY_ID,
         payload:response
     })).catch(err => dispatch({
         type:DESABLE_LOADING

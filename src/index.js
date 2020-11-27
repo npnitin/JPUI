@@ -12,7 +12,7 @@ const store = ConfigureStore();
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter> 
-            <App />
+            <App/>
         </BrowserRouter>
     </Provider>, 
 rootElement);

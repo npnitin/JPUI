@@ -28,12 +28,10 @@ class Navbar extends Component {
                       <Menu.Item>Interview Questions</Menu.Item>
                       <Menu.Item position="right">
                         <Button  basic inverted as={Link} to='/user/createnewjob'>Add Job</Button>
-                       {/*  <Button  basic inverted as={Link} to="/dashboard">Search Job</Button> */}
                         {
                         autheticated?
                         <SignInMenu user={user}/>:
                         <Button  basic inverted as={Link} to="/login">Login/Register</Button>
-                        
                         }
                       </Menu.Item>
 

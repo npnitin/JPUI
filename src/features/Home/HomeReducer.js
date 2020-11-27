@@ -6,10 +6,11 @@ import {
      LAUNCH_JOB_CREATED_SUCCESS_MODAL,
      DISMISS_JOB_CREATED_SUCCESS_MODAL,
     SET_SAL,CLEAR_FILTERS,
-    SET_EXP,GET_RECENT_JOBS} from "./HomeConstants"
+    SET_EXP,GET_RECENT_JOBS, GET_JOB_BY_ID} from "./HomeConstants"
 
 const initialState={
     jobs:[],
+    job:{},
     loading:false,
     skill:'',
     city:'',
@@ -111,6 +112,13 @@ export const HomeReducer = (state=initialState,action) =>{
             return{
                 ...state,
                 jobs:action.payload,
+                loading:false
+            }
+        }
+        case GET_JOB_BY_ID:{
+            return{
+                ...state,
+                job:action.payload,
                 loading:false
             }
         }

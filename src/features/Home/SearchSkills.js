@@ -22,6 +22,7 @@ class SearchSkills extends Component {
     })
   }
   handleResultSelect = (e, { result }) => {
+    console.log(result);
     this.setState({ value: result.title })
     this.props.setSkill(result.title);
   }
@@ -46,7 +47,7 @@ class SearchSkills extends Component {
     const { isLoading, value, results } = this.state;
     return (
       <Grid>
-        <Grid.Column width={16}>
+        <Grid.Column width={30}>
           <Form>
         <Form.Group widths='equal'>
           <Search placeholder='Skill you are looking for?'
@@ -63,6 +64,7 @@ class SearchSkills extends Component {
           </Form>
         </Grid.Column>
       </Grid>
+     
     )
   }
 }

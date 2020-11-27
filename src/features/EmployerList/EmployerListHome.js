@@ -35,9 +35,9 @@ export default class EmployerListHome extends Component {
         </List.Item>
 
         <List.Item>
-        <Image avatar src='https://logo.clearbit.com/ibm.com' />
+        <Image avatar src='https://logo.clearbit.com/kpit.com' />
         <List.Content>
-            <List.Header>IBM</List.Header>
+            <List.Header>KPIT</List.Header>
         </List.Content>
         </List.Item>
 

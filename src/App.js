@@ -10,14 +10,18 @@ import CreateJobForm from './features/Jobs/CreateJob/CreateJobForm';
 import RegisterForm from './features/Login/RegisterForm';
 import UserDashboard from './features/User/UserDashboard';
 import TestComponent from './Test/TestComponent';
+import Jobdetails from './features/Home/Jobdetails';
+import Profile from './features/User/Profile';
+
 
 function App() {
   
   return (
-    <div>
+    <div >
       <Navbar/><br/><br/>
-      <Container className="main">
+      <Container className="main" >
         <Route exact path="/" component={Home}/>
+        <Route exact path="/jobDetails/:job" component={Jobdetails}/>
         <Route exact path="/dashboard" component={Dashboard}/>
         <Route exact path="/login" component={AuthHome}/>
         <Route exact path="/register" component={RegisterForm}/>

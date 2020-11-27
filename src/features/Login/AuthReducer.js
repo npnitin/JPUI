@@ -31,7 +31,8 @@ export const AuthReducer = (state=initialState,action)=>{
                     user:action.payload,
                     loading:false,
                     autheticated:true,
-                    error:''
+                    error:'',
+                    registrationSuceessMessage:''
                 }
             }else{
                 return {

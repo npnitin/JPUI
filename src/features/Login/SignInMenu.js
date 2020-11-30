@@ -18,7 +18,7 @@ const mapDispatchToProps ={
         const{user} = this.props;
         return (
             <Menu.Item position="right">
-            <Image avatar spaced="right" src='/assets/user.png' />
+            <Image avatar spaced="right" src={user.profilePhotoUrl} />
             <Dropdown pointing="top left" text={user.name}>
               <Dropdown.Menu>
                 <Dropdown.Item text="Create New Job" as={Link} to='/user/createnewjob' icon="plus" />

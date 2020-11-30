@@ -47,7 +47,7 @@ class RecentJobs extends Component {
                                 <Grid>
                                     <Grid.Column  mobile={13} tablet={13} computer={13}>
                                         <br/>
-                                        <List.Description as='a'><b>Job Description:</b>{job.jobDescription}</List.Description>
+                                        <List.Description as='a'><b>Job Description:</b><pre style={{whiteSpace:'pre-line'}}>{job.jobDescription}</pre></List.Description>
                                        <br/>
                                         <List.Description as='a'><b>Skills:</b>{job.skills.toString()}</List.Description>
                                         <span style={{ float: 'right' }}>Posted By <b>{job.posterName}</b> on <b>{this.fomatdate(new Date(job.postedOn))}</b> </span>

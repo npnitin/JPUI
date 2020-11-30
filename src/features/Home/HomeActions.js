@@ -106,6 +106,17 @@ export const addJob = (job) => dispatch =>{
         type:LAUNCH_JOB_CREATED_SUCCESS_MODAL
     }))
 }
+export const applyJob = (jobId,userId) =>dispatch=>{
+    dispatch(setItemsLoading());
+    axios({
+        method:'GET',
+        url: API_BASE_URL+'/api/jobportal/jobpost/applyforjob?jobId='+jobId+'&userId='+userId,
+        config: { headers: {'Content-Type': 'application/json' }}
+    })
+    .then(response => dispatch({
+        type:LAUNCH_JOB_APPLIED_SUCCESS_MODAL
+    }))
+}
 export const uploadResume = (file,jobId) =>dispatch=>{
     dispatch(setItemsLoading());
     const data = new FormData()

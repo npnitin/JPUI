@@ -1,3 +1,4 @@
 export const GET_JOBS_BY_EMAIL='GET_JOBS_EMAIL';
 export const LOADING='LOADING';
 export const DISABLE_LOADING='DISABLE_LOADING';
+export const UPLOAD_RESUME='UPLOAD_RESUME';

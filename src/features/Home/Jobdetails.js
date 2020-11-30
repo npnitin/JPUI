@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {Segment,Label,Button,Container,Header,Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import{ getJobById,uploadResume,dismissJobAppliedSuceesModal} from './HomeActions';
+import{ getJobById,uploadResume,dismissJobAppliedSuceesModal,applyJob} from './HomeActions';
 import { connect } from 'react-redux';
 import{withRouter} from 'react-router';
 
@@ -12,7 +12,8 @@ const mapStateToProps=(state)=>({
 const mapDispatchToProps={
   getJobById,
   uploadResume,
-  dismissJobAppliedSuceesModal
+  dismissJobAppliedSuceesModal,
+  applyJob
 }
 class Jobdetails extends Component {
 
@@ -44,11 +45,11 @@ class Jobdetails extends Component {
      this.props.getJobById(this.props.match.params.job)
   }
   applyJob = () =>{
+    console.log(this.props);
     if(!this.props.auth.autheticated){
       this.props.history.push('/login');
     }else{
-      //make api call to apply for job
-      alert('application submitted');
+      this.props.applyJob(this.props.jobs.job.data.id,this.props.auth.user.id);
     }
   }
     render() {
@@ -65,7 +66,7 @@ class Jobdetails extends Component {
               <p>Company:{jobs.job.data.company.toString()}</p>
               <p>Skills:{jobs.job.data.city.toString()}</p>
           <p>Skills:{jobs.job.data.skills.toString()}</p>
-          <p>Job Description:<pre style={{whiteSpace:'pre-line'}}>{jobs.job.data.jobDescription.toString()}</pre></p>
+          <span>Job Description:<pre style={{whiteSpace:'pre-line'}}>{jobs.job.data.jobDescription.toString()}</pre></span><br/>
           <p>Experience:{jobs.job.data.experienceFrom} To {jobs.job.data.experienceTo} Years</p>
           <p>Salary:{jobs.job.data.salaryFrom} To {jobs.job.data.salaryTo} LPA</p>
          

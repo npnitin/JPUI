@@ -6,7 +6,7 @@ import {
      LAUNCH_JOB_CREATED_SUCCESS_MODAL,
      DISMISS_JOB_CREATED_SUCCESS_MODAL,
     SET_SAL,CLEAR_FILTERS,
-    SET_EXP,GET_RECENT_JOBS, GET_JOB_BY_ID} from "./HomeConstants"
+    SET_EXP,GET_RECENT_JOBS, GET_JOB_BY_ID,SET_JOB} from "./HomeConstants"
 
 const initialState={
     jobs:[],
@@ -28,6 +28,11 @@ export const HomeReducer = (state=initialState,action) =>{
                 ...state,
                 jobs:action.payload,
                 loading:false
+            }
+            case SET_JOB:
+                return{
+                    ...state,
+                    job:action.payload
             }
             case ITEMS_LOADING:
                 return{

@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { Button, Segment, Item, Icon, Grid, Label, Header,Modal } from 'semantic-ui-react';
+import { Button, Segment, Item, Icon, Grid, Label, Header,Modal,Dimmer,Loader } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { uploadResume,dismissJobAppliedSuceesModal } from '../../Home/HomeActions';
-
+import { uploadResume,dismissJobAppliedSuceesModal,applyJob,setJob } from '../../Home/HomeActions';
+import{withRouter} from 'react-router';
 
 const mapStateToProps =(state)=>({
-  jobs:state.jobs
+  jobs:state.jobs,
+  auth:state.auth
 })
 
 const mapDispatchToProps ={
   uploadResume,
-  dismissJobAppliedSuceesModal
+  dismissJobAppliedSuceesModal,
+  applyJob,
+  setJob
 }
 class Job extends Component {
 
@@ -21,8 +24,10 @@ class Job extends Component {
       file: {},
       jobId: '',
       disableApplyButton: true,
+      job:{}
     };
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.applyJob = this.applyJob.bind(this);
   }
   handleOnChange = (id, e) => {
     this.setState({
@@ -50,16 +55,27 @@ class Job extends Component {
     return day + ' ' + monthNames[monthIndex] + ' ' + year;
   }
   closeModal = () =>{
-    this.props.dismissJobAppliedSuceesModal()
+    this.props.dismissJobAppliedSuceesModal();
+  }
+  applyJob = (job) =>{
+    if(!this.props.auth.autheticated){
+      this.props.history.push('/login');
+    }else{
+      this.props.setJob(job);
+      this.props.applyJob(job.id,this.props.auth.user.id);
+    }
   }
 
   render() {
+    const{ jobAppliedSucessModal} = this.props.jobs;
    const { job } = this.props;
-   const{ jobAppliedSucessModal} = this.props.jobs;
+ 
+   
    let img = 'https://logo.clearbit.com/'+job.company+'.com';
    let defaultImage ='https://logo.clearbit.com/company.com';
     return (
       <Segment.Group>
+       
         <Segment id={job.id}>
           <Item.Group>
             <Item>
@@ -95,20 +111,9 @@ class Job extends Component {
                             <span style={{ float: 'right' }}>Posted By <b>{job.posterName}</b> on <b>{this.fomatdate(new Date(job.postedOn))}</b> </span>
           </span>
         </Segment>
-        <Segment>
-          <Header color='teal' as='h5'>To apply for this job, Upload your resume and click on apply</Header>
-          <Label as="label" basic htmlFor="upload" size='large'>
-
-            <input
-              id="upload"
-              multiple
-              type="file"
-              name="selectedFile"
-              alt={job.id}
-              onChange={(event) => this.handleOnChange(job.id, event)}
-            />
-          </Label>
-          <Button floated='right' disabled={job.id !== this.state.jobId ? true : false} primary content="Apply" onClick={() => this.uploadResume(job)} />
+        <Segment style={{height:'5vw'}}>
+        
+          <Button floated='right' primary content="Apply for this job"  onClick={() => this.applyJob(job)} />
         </Segment>
 
         <Modal
@@ -116,7 +121,7 @@ class Job extends Component {
           size="small">
           <Modal.Content>
             <p>
-              You have succesfully applied for the job
+            You have succesfully applied for the job <b>{this.props.jobs.job.jobTitle}</b> at {this.props.jobs.job.company}
             </p>
           </Modal.Content>
           <Modal.Actions>
@@ -129,4 +134,4 @@ class Job extends Component {
     )
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Job);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Job));

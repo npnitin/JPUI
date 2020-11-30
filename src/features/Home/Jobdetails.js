@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import {Segment,Label,Button,Container,Header,Icon } from 'semantic-ui-react';
+import {Segment,Label,Button,Container,Header,Icon,Dimmer,Loader,Modal } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import{ getJobById,uploadResume,dismissJobAppliedSuceesModal,applyJob} from './HomeActions';
 import { connect } from 'react-redux';
@@ -28,6 +28,9 @@ class Jobdetails extends Component {
     this.handleOnChange = this.handleOnChange.bind(this);
     this.applyJob = this.applyJob.bind(this);
   }
+  closeModal = () =>{
+    this.props.dismissJobAppliedSuceesModal()
+  }
   handleOnChange = (id, e) => {
     this.setState({
       fileName: e.target.files[0].name,
@@ -45,7 +48,7 @@ class Jobdetails extends Component {
      this.props.getJobById(this.props.match.params.job)
   }
   applyJob = () =>{
-    console.log(this.props);
+   
     if(!this.props.auth.autheticated){
       this.props.history.push('/login');
     }else{
@@ -53,13 +56,18 @@ class Jobdetails extends Component {
     }
   }
     render() {
+      const{ jobAppliedSucessModal} = this.props.jobs;
       if(!this.props.jobs.job.data){
         return <div/>
       }
        const{ jobs } = this.props;
-       console.log(this.props);
+       const {loading} = this.props.jobs;
+
         return (
            <Fragment>
+              {loading===true ? <Dimmer active>
+                    <Loader />
+                </Dimmer>:''}
               <Button floated='right' color='teal' as={Link} to='/'><Icon name='backward'></Icon>Go To Home</Button>
            <Container text style={{ marginTop: '7em' }}>
               <Header as='h1'>{jobs.job.data.jobTitle}</Header>
@@ -70,11 +78,27 @@ class Jobdetails extends Component {
           <p>Experience:{jobs.job.data.experienceFrom} To {jobs.job.data.experienceTo} Years</p>
           <p>Salary:{jobs.job.data.salaryFrom} To {jobs.job.data.salaryTo} LPA</p>
          
+         
 
           
           <Button floated='right'  primary content="Apply for this job" onClick={this.applyJob} />
           <br/>
         </Container>
+        
+        <Modal
+          open={jobAppliedSucessModal}
+          size="small">
+          <Modal.Content>
+            <p>
+              You have succesfully applied for the job: <b>{jobs.job.data.jobTitle}</b> at {jobs.job.data.company.toString()}
+            </p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button primary onClick={this.closeModal}>
+              <Icon name='close' /> Close
+            </Button>
+          </Modal.Actions>
+        </Modal>
         </Fragment>
         )
     }

@@ -10,7 +10,8 @@ import {
      SET_EXP,
      CLEAR_FILTERS,
      GET_RECENT_JOBS,
-    GET_JOB_BY_ID}
+    GET_JOB_BY_ID,
+    SET_JOB}
       from "./HomeConstants"
 import {API_BASE_URL} from '../../util/Constants';
 import axios from "axios";
@@ -93,7 +94,12 @@ export const setSkill = (skill) =>{
         payload:skill
     }
 }
-
+export const setJob = (job) =>{
+    return {
+        type:SET_JOB,
+        payload:job
+    }
+}
 export const addJob = (job) => dispatch =>{
     dispatch(setItemsLoading());
     axios({

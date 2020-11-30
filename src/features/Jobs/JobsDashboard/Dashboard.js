@@ -36,7 +36,7 @@ class Dashboard extends Component {
     render() {
         const { loading } =this.props.jobs;
         const { data } = this.props.jobs.jobs;
-        console.log('data:'+JSON.stringify(data));
+       
         return (
             <Fragment>
                 {loading===true ? <Dimmer active>

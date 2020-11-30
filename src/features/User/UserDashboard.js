@@ -7,6 +7,7 @@ import CreateJobForm from '../Jobs/CreateJob/CreateJobForm';
 import JobDetails from './Jobs/JobDetails';
 import AddNewInterviewQuestions from './AddNewInterviewQuestions';
 import MyInterviewQuestions from './MyInterviewQuestions';
+import UpdateUser from './UpdateUser'
 
 export default class UserDashboard extends Component {
     render() {
@@ -19,6 +20,8 @@ export default class UserDashboard extends Component {
                 <Route path="/user/createnewjob" component={CreateJobForm} />
                 <Route path="/user/createNewInterviewQuestions" component={AddNewInterviewQuestions} />
                 <Route path="/user/myInterviewQuestions" component={MyInterviewQuestions} />
+                <Route path="/user/update" component={UpdateUser} />
+                
             </Grid.Column>   
             
         </Grid>

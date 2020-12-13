@@ -12,6 +12,7 @@ import UserDashboard from './features/User/UserDashboard';
 import TestComponent from './Test/TestComponent';
 import Jobdetails from './features/Home/Jobdetails';
 import Profile from './features/User/Profile';
+import JobAlert from './features/JobAlert/JobAlert';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/create" component={CreateJobForm}/>
         <Route path="/user" component={UserDashboard}/>
         <Route path="/test" component={TestComponent}/>
+        <Route path="/jobalert" component={JobAlert}/>
         </Container>
     </div>
   );

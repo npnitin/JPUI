@@ -27,6 +27,7 @@ class Navbar extends Component {
                       <Menu.Item>Interview Questions</Menu.Item>
                       <Menu.Item>Interview Questions</Menu.Item>
                       <Menu.Item position="right">
+                      <Button  basic inverted as={Link} to='/jobalert'>Create Job Alert</Button>
                         <Button  basic inverted as={Link} to='/user/createnewjob'>Add Job</Button>
                         {
                         autheticated?
